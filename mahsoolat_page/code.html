@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محصولات | فولاد صنعت</title>
+  <link rel="stylesheet" href="code.css">
+</head>
+<body>
+<header>
+  <div class="header-content container">
+    <div class="logo">فولاد صنعت</div>
+    <nav>
+      <a href="../mainpage.html">خانه</a>
+      <a class="active" href="#">محصولات</a>
+      <a href="../shop_page/code.html">سبد خرید</a>
+      <a href="#">مشاوره</a>
+      <a href="../Page_suggest/code.html">پیشنهاد خرید</a>
+      <a href="../mozaiede/code.html">مزایدات</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-container">
+        <input class="search-input" placeholder="جستجوی مقاطع فولادی..." type="text">
+      </div>
+      <button class="login-btn" onclick="location.href='../Page_login/code.html'">ورود</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <aside>
+    <div class="sidebar-inner">
+      <div class="filter-header">
+        <span class="material-symbols-outlined"><img src="../icons/settings_512px.png" class="icon" alt=""></span>
+        <h2>فیلتر محصولات</h2>
+      </div>
+      <div class="filter-section">
+        <h3 class="filter-title">نوع محصول</h3>
+        <div class="chip-group" id="productTypeFilters">
+          <span class="chip active">میلگرد</span>
+          <span class="chip">تیرآهن</span>
+          <span class="chip">ورق سیاه</span>
+          <span class="chip">نبشی</span>
+          <span class="chip">پروفیل</span>
+        </div>
+      </div>
+      <div class="filter-section">
+        <h3 class="filter-title">سایز (میلی‌متر)</h3>
+        <div class="checkbox-grid">
+          <label class="checkbox-item"><input type="checkbox"><span>12</span></label>
+          <label class="checkbox-item"><input checked type="checkbox"><span>14</span></label>
+          <label class="checkbox-item"><input type="checkbox"><span>16</span></label>
+          <label class="checkbox-item"><input type="checkbox"><span>18</span></label>
+          <label class="checkbox-item"><input type="checkbox"><span>20</span></label>
+        </div>
+      </div>
+      <div class="filter-section">
+        <h3 class="filter-title">فروشنده</h3>
+        <select class="select-input">
+          <option>همه فروشندگان</option>
+          <option>ذوب آهن اصفهان</option>
+          <option>فولاد مبارکه</option>
+          <option>کویر کاشان</option>
+        </select>
+      </div>
+      <button class="clear-filters" id="resetFilters">پاکسازی فیلترها</button>
+    </div>
+  </aside>
+
+  <section class="content-area">
+    <div class="content-header">
+      <div>
+        <h1>بازار تخصصی مقاطع فولادی</h1>
+        <p>نمایش ۲۴ محصول از مجموع ۱,۴۵۰ مورد</p>
+      </div>
+      <div class="sort-options">
+        <span>مرتب‌سازی براساس:</span>
+        <button class="sort-btn active">جدیدترین</button>
+        <button class="sort-btn">ارزان‌ترین</button>
+        <button class="sort-btn">گران‌ترین</button>
+      </div>
+    </div>
+
+    <div class="grid" id="productGrid">
+      <!-- Card 1 -->
+      <article class="product-card" data-product-id="1">
+        <div class="image-wrapper">
+          <img alt="میلگرد ذوب آهن" src="../images/mil14.png">
+          <div class="badge">پیشنهاد ویژه</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>میلگرد ۱۴ ذوب آهن اصفهان</h3>
+            <span class="tech-label">A3</span>
+          </div>
+          <div class="seller-info">
+            <span>فروشنده: ذوب آهن اصفهان</span>
+          </div>
+          <div class="price-box">
+            <div class="price-row">
+              <span class="price-label">قیمت هر کیلوگرم:</span>
+              <div class="price-value">
+                <span class="price-num">24,500</span>
+                <span class="price-unit">تومان</span>
+              </div>
+            </div>
+            <div class="update-info">
+              <span>آخرین بروزرسانی:</span>
+              <span class="update-time highlight">۱۰ دقیقه پیش</span>
+            </div>
+          </div>
+          <button class="buy-btn">
+            <span class="material-symbols-outlined"><img class="icon" src="../icons/Shopping Cart_512px.png" alt=""></span>
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="product-card" data-product-id="2">
+        <div class="image-wrapper">
+          <img alt="تیرآهن سنگین" src="../images/tir18.png">
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>تیرآهن ۱۸ سنگین</h3>
+            <span class="tech-label">IPE</span>
+          </div>
+          <div class="seller-info">
+            <span>فروشنده: فولاد مبارکه</span>
+          </div>
+          <div class="price-box">
+            <div class="price-row">
+              <span class="price-label">قیمت هر شاخه:</span>
+              <div class="price-value">
+                <span class="price-num">4,850,000</span>
+                <span class="price-unit">تومان</span>
+              </div>
+            </div>
+            <div class="update-info">
+              <span>آخرین بروزرسانی:</span>
+              <span class="update-time">۱ ساعت پیش</span>
+            </div>
+          </div>
+          <button class="buy-btn">
+            <span class="material-symbols-outlined"><img class="icon" src="../icons/Shopping Cart_512px.png" alt=""></span>
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="product-card" data-product-id="3">
+        <div class="image-wrapper">
+          <img alt="ورق سیاه" src="../images/varaq2mil.png">
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>ورق سیاه ۲ میلی‌متر</h3>
+            <span class="tech-label">ST37</span>
+          </div>
+          <div class="seller-info">
+            <span>فروشنده: فولاد غرب</span>
+          </div>
+          <div class="price-box">
+            <div class="price-row">
+              <span class="price-label">قیمت هر کیلوگرم:</span>
+              <div class="price-value">
+                <span class="price-num">31,200</span>
+                <span class="price-unit">تومان</span>
+              </div>
+            </div>
+            <div class="update-info">
+              <span>آخرین بروزرسانی:</span>
+              <span class="update-time">۳۰ دقیقه پیش</span>
+            </div>
+          </div>
+          <button class="buy-btn">
+            <span class="material-symbols-outlined"><img class="icon" src="../icons/Shopping Cart_512px.png" alt=""></span>
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="product-card" data-product-id="4">
+        <div class="image-wrapper">
+          <img alt="نبشی" src="../images/nabshi50.png">
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>نبشی ۵۰*۵۰ ضخامت ۵</h3>
+            <span class="tech-label">L-Profile</span>
+          </div>
+          <div class="seller-info">
+            <span>فروشنده: فولاد سپهر</span>
+          </div>
+          <div class="price-box">
+            <div class="price-row">
+              <span class="price-label">قیمت هر کیلوگرم:</span>
+              <div class="price-value">
+                <span class="price-num">28,900</span>
+                <span class="price-unit">تومان</span>
+              </div>
+            </div>
+            <div class="update-info">
+              <span>آخرین بروزرسانی:</span>
+              <span class="update-time">۲ ساعت پیش</span>
+            </div>
+          </div>
+          <button class="buy-btn">
+            <span class="material-symbols-outlined"><img class="icon" src="../icons/Shopping Cart_512px.png" alt=""></span>
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="product-card" data-product-id="5">
+        <div class="image-wrapper">
+          <img alt="میلگرد ۱۶" src="../images/mil16kavir.png">
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>میلگرد ۱۶ کویر کاشان</h3>
+            <span class="tech-label">A3</span>
+          </div>
+          <div class="seller-info">
+            <span>فروشنده: کویر کاشان</span>
+          </div>
+          <div class="price-box">
+            <div class="price-row">
+              <span class="price-label">قیمت هر کیلوگرم:</span>
+              <div class="price-value">
+                <span class="price-num">25,100</span>
+                <span class="price-unit">تومان</span>
+              </div>
+            </div>
+            <div class="update-info">
+              <span>آخرین بروزرسانی:</span>
+              <span class="update-time highlight">۵ دقیقه پیش</span>
+            </div>
+          </div>
+          <button class="buy-btn">
+            <span class="material-symbols-outlined"><img class="icon" src="../icons/Shopping Cart_512px.png" alt=""></span>
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="product-card" data-product-id="6">
+        <div class="image-wrapper">
+          <img alt="پروفیل" src="../images/profil40.png">
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>قوطی پروفیل ۴۰*۴۰</h3>
+            <span class="tech-label">Box Section</span>
+          </div>
+          <div class="seller-info">
+            <span>فروشنده: فولاد گستر</span>
+          </div>
+          <div class="price-box">
+            <div class="price-row">
+              <span class="price-label">قیمت هر شاخه:</span>
+              <div class="price-value">
+                <span class="price-num">720,000</span>
+                <span class="price-unit">تومان</span>
+              </div>
+            </div>
+            <div class="update-info">
+              <span>آخرین بروزرسانی:</span>
+              <span class="update-time">۴ ساعت پیش</span>
+            </div>
+          </div>
+          <button class="buy-btn">
+            <span class="material-symbols-outlined"><img class="icon" src="../icons/Shopping Cart_512px.png" alt=""></span>
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <div class="pagination">
+      <button class="page-btn"><span class="material-symbols-outlined"><img class="icon" src="../icons/chevronright.svg" alt=""></span></button>
+      <button class="page-btn active">۱</button>
+      <button class="page-btn">۲</button>
+      <button class="page-btn">۳</button>
+      <span style="padding: 0 1rem; color: var(--on-surface-variant)">...</span>
+      <button class="page-btn">۴۸</button>
+      <button class="page-btn"><span class="material-symbols-outlined"><img class="icon" src="../icons/chevronleft (1).svg" alt=""></span></button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">فولاد صنعت</div>
+      <p class="footer-desc">بزرگترین مرجع تخصصی تامین و توزیع مقاطع فولادی در ایران. با بیش از ۲۰ سال سابقه درخشان در صنعت فولاد کشور.</p>
+    </div>
+    <div class="footer-links">
+      <div class="link-group">
+        <h4>خدمات ما</h4>
+        <div class="link-list"><a href="#">استانداردها</a><a href="#">خدمات مهندسی</a><a href="#">برشکاری</a></div>
+      </div>
+      <div class="link-group">
+        <h4>لینک‌های سریع</h4>
+        <div class="link-list"><a href="#">تماس با ما</a><a href="#">درباره ما</a><a href="#">قوانین و مقررات</a></div>
+      </div>
+      <div class="link-group">
+        <h4>ارتباط با ما</h4>
+        <div class="contact-text">تلفن: ۰۲۱-۸۸۸۸۸۸۸۸<br>ایمیل: info@fooladsanat.ir</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© ۱۴۰۲ تمامی حقوق برای فولاد صنعت محفوظ است.</div>
+</footer>
+
+<script>
+  // ----------------------------------------------
+  // 1. Functions for cart (localStorage)
+  // ----------------------------------------------
+  const CART_KEY = 'steel_forge_cart';
+
+  function getCart() {
+    const stored = localStorage.getItem(CART_KEY);
+    return stored ? JSON.parse(stored) : [];
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  // افزودن محصول به سبد خرید (اگر موجود باشد فقط quantity زیاد می‌شود)
+  function addToCart(product) {
+    let cart = getCart();
+    const existingIndex = cart.findIndex(item => item.id === product.id);
+    if (existingIndex !== -1) {
+      cart[existingIndex].qty += 1;
+    } else {
+      cart.push({ ...product, qty: 1 });
+    }
+    saveCart(cart);
+    // نمایش پیام ساده
+    alert(`✅ ${product.title} به سبد خرید اضافه شد.`);
+  }
+
+  // ----------------------------------------------
+  // 2. استخراج اطلاعات محصول از هر کارت
+  // ----------------------------------------------
+  function extractProductFromCard(cardElement) {
+    // id (از data-product-id)
+    const id = parseInt(cardElement.getAttribute('data-product-id'));
+
+    // عنوان محصول (h3 داخل .card-body)
+    const title = cardElement.querySelector('.card-body h3').innerText;
+
+    // فروشنده (از .seller-info)
+    const sellerSpan = cardElement.querySelector('.seller-info span');
+    const seller = sellerSpan ? sellerSpan.innerText : 'نامشخص';
+
+    // متا: ترکیب نوع محصول (تکنولوژی) + فروشنده
+    const techLabel = cardElement.querySelector('.tech-label')?.innerText || '';
+    const meta = `${techLabel} | ${seller}`;
+
+    // واحد (از متن .price-label مثلاً "قیمت هر کیلوگرم:" یا "قیمت هر شاخه:")
+    const priceLabel = cardElement.querySelector('.price-label').innerText;
+    let unit = 'کیلوگرم';
+    if (priceLabel.includes('شاخه')) unit = 'شاخه';
+    else if (priceLabel.includes('کیلوگرم')) unit = 'کیلوگرم';
+    else unit = 'عدد';
+
+    // قیمت (تبدیل رشته با کاما به عدد)
+    const priceText = cardElement.querySelector('.price-num').innerText;
+    const price = parseInt(priceText.replace(/,/g, ''));
+
+    // آدرس تصویر
+    const imgSrc = cardElement.querySelector('.image-wrapper img')?.getAttribute('src') || '';
+
+    return {
+      id,
+      title,
+      meta,
+      unit,
+      price,
+      image: imgSrc,
+    };
+  }
+
+  // ----------------------------------------------
+  // 3. اتصال رویداد کلیک به همه دکمه‌های خرید
+  // ----------------------------------------------
+  function bindAddToCartButtons() {
+    const buyBtns = document.querySelectorAll('.buy-btn');
+    buyBtns.forEach(btn => {
+      btn.removeEventListener('click', handleBuyClick); // جلوگیری از دابل اتصال
+      btn.addEventListener('click', handleBuyClick);
+    });
+  }
+
+  function handleBuyClick(event) {
+    const btn = event.currentTarget;
+    const productCard = btn.closest('.product-card');
+    if (!productCard) return;
+    const product = extractProductFromCard(productCard);
+    addToCart(product);
+  }
+
+  // ----------------------------------------------
+  // 4. فیلتر و مرتب‌سازی (همان کد قبلی شما با یک اصلاح کوچک)
+  // ----------------------------------------------
+  document.addEventListener('DOMContentLoaded', () => {
+    // Product Type Filter
+    const chips = document.querySelectorAll('#productTypeFilters .chip');
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        console.log('Filtering by:', chip.innerText);
+      });
+    });
+
+    // Sorting buttons
+    const sortBtns = document.querySelectorAll('.sort-btn');
+    sortBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sortBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        console.log('Sorting by:', btn.innerText);
+      });
+    });
+
+    // Reset filters
+    document.getElementById('resetFilters').addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chips[0].classList.add('active');
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = false);
+      checkboxes[1].checked = true;
+      document.querySelector('.select-input').selectedIndex = 0;
+      console.log('Filters cleared');
+    });
+
+    // اضافه کردن قابلیت افزودن به سبد خرید به دکمه‌ها
+    bindAddToCartButtons();
+  });
+</script>
+</body>
+</html>

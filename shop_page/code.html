@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="stylesheet" href="code.css">
+<title>سبد خرید صنعتی | فولاد صنعت</title>
+<style>
+</style>
+</head>
+<body>
+<header>
+<div class="container nav-wrapper">
+<a class="logo" href="#">فولاد صنعت</a>
+<nav>
+<a href="../mainpage.html">خانه</a>
+<a href="../mahsoolat_page/code.html">محصولات</a>
+<a class="active" href="#">سبد خرید</a>
+<a href="#">مشاوره</a>
+<a href="#">پیشنهاد خرید</a>
+<a href="#">مزایدات</a>
+</nav>
+<div class="header-actions">
+<button class="btn-icon">
+<span class="material-symbols-outlined"><img style="height: 30px;" src="../icons/shopping_cart_500px.png" alt="" srcset=""></span>
+</button>
+<button class="btn-primary">ورود</button>
+</div>
+</div>
+</header>
+<main class="container">
+<div class="page-header">
+<h1>سبد خرید صنعتی</h1>
+<p>مدیریت سفارشات مقاطع فولادی و مواد اولیه</p>
+</div>
+<div class="cart-grid">
+<div class="cart-items" id="cart-items-container">
+<!-- Items injected by JS -->
+</div>
+<div class="summary-sidebar">
+<div class="summary-card">
+<h2>خلاصه سفارش</h2>
+<div class="summary-row">
+<span class="summary-label" id="summary-count">مجموع اقلام (۰ مورد)</span>
+<span class="summary-value"><span id="subtotal">۰</span> <span style="font-size:0.75rem; opacity: 0.7;">ریال</span></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">هزینه حمل و نقل صنعتی</span>
+<span class="summary-value"><span id="shipping">۱۵,۵۰۰,۰۰۰</span> <span style="font-size:0.75rem; opacity: 0.7;">ریال</span></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">مالیات بر ارزش افزوده (۹٪)</span>
+<span class="summary-value"><span id="tax">۰</span> <span style="font-size:0.75rem; opacity: 0.7;">ریال</span></span>
+</div>
+<div class="summary-divider"></div>
+<div class="total-box">
+<span class="total-label">مبلغ نهایی</span>
+<div class="total-amount">
+<span class="total-value" id="grand-total">۰</span>
+<span class="total-sub">ریال قابل پرداخت</span>
+</div>
+</div>
+<button class="checkout-btn">
+                        تکمیل خرید و پرداخت
+                        <!-- <span class="material-symbols-outlined">chevron_left</span> -->
+</button>
+<div class="validity-info">
+<!-- <span class="material-symbols-outlined" style="color: var(--tertiary);">verified_user</span> -->
+<p>تمامی قیمت‌ها طبق نرخ روز بازار آهن و فولاد محاسبه شده و به مدت ۱۵ دقیقه معتبر است.</p>
+</div>
+</div>
+<div class="support-card">
+<div>
+<h4>نیاز به مشاوره فنی دارید؟</h4>
+<p>تماس با کارشناسان فروش فولاد صنعت</p>
+</div>
+<button class="support-btn">
+<!-- <span class="material-symbols-outlined">headset_mic</span> -->
+</button>
+</div>
+</div>
+</div>
+<section class="features">
+<div class="feature-item">
+<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/shipping.png" alt="" srcset=""></span></div>
+<h3>ارسال سریع با ناوگان سنگین</h3>
+<p>تحویل مستقیم از انبار کارخانه به تمام نقاط کشور</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/document_480px.png" alt="" srcset=""></span></div>
+<h3>صدور آنی فاکتور رسمی</h3>
+<p>مطابق با استانداردهای سازمان امور مالیاتی کشور</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/verified_badge_240px.png" alt="" srcset=""></span></div>
+<h3>ضمانت اصالت و آنالیز متریال</h3>
+<p>ارائه گواهینامه فنی و سرتیفیکیت معتبر محصول</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-content">
+<div class="footer-logo">فولاد صنعت</div>
+<div class="footer-links">
+<a href="#">استانداردها</a>
+<a href="#">خدمات مهندسی</a>
+<a href="#">تماس با ما</a>
+</div>
+<div class="copyright">
+                © ۱۴۰۲ تمامی حقوق برای فولاد صنعت محفوظ است.
+            </div>
+</div>
+</footer>
+<script>
+        // Initial Data
+        const defaultCart = [
+            {
+                id: 1,
+                title: 'تیرآهن IPE 140 - اصفهان',
+                meta: 'استاندارد: DIN 1025-5 | متریال: ST37',
+                unit: 'شاخه ۱۲ متری',
+                price: 42500000,
+                qty: 12,
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgy_OUe4vveUjALb9QIhUshvvNILH21oLWM2VCfxq6ZW01ZOnv1H8Me_cT5LztPtdRJXzpUuBH6WTHWJSD_QYEviP3yn8XMEviVnfeLN8vyAfLAf2BoKHf0Hp9bgfGe7uzepAQcLuogUN8PT9hUnAucoZ8dxVqmFU6WI36ZBFxmSIdttL2NoDCVtYNRKWczmzq8fkSVILIrHJFsHqoyi2QqWmfTfOedEsknx2LCtTZ8jh_PthrfWaQty1QMgkf3TlG5u4fPXX-xEdk'
+            },
+            {
+                id: 2,
+                title: 'ورق سیاه ۲ میل - فولاد مبارکه',
+                meta: 'ابعاد: ۱۰۰۰×۲۰۰۰ | ضخامت: ۲ میلی‌متر',
+                unit: 'تُن',
+                price: 318000000,
+                qty: 5,
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBJ2uXh47mEYfia1u5TI573qDab5hTFP7-Xqw_zbOCJ2GVtaKwj7GDRoWu3miUc9SJbIdMS3CPx7B-rjNWt6H20tHdaI1_iaxDzMAwKOxUmhsqsQoK4vPd1pfX7v-g-lJXtgGJI9EtSrPYbxM-e493BO2W02Y4cQ1EJfoFXwoa0aFtX7adFgLO-YDOeWc5UuCIGvPravZ49c8i8-knfxo9eq-WD4vxfYukyt47ZX-YnIg5gGpJv0vBwEHmlTOwijTDJIq9XAghaUt-X'
+            }
+        ];
+
+        // State Management
+        let cart = JSON.parse(localStorage.getItem('steel_forge_cart')) || defaultCart;
+        const shippingCost = 15500000;
+
+        function saveCart() {
+            localStorage.setItem('steel_forge_cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function updateQty(id, delta) {
+            cart = cart.map(item => {
+                if (item.id === id) {
+                    const newQty = Math.max(1, item.qty + delta);
+                    return { ...item, qty: newQty };
+                }
+                return item;
+            });
+            saveCart();
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+        }
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `<div style="padding: 3rem; text-align: center; background: white; border-radius: 8px;">سبد خرید شما خالی است.</div>`;
+                updateSummary(0);
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.title}" class="item-img">
+                    <div class="item-details">
+                        <div class="item-header">
+                            <h3 class="item-title">${item.title}</h3>
+                            <button class="delete-btn" onclick="removeItem(${item.id})">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                        <p class="item-meta">${item.meta}</p>
+                        <div class="item-controls">
+                            <div class="qty-picker">
+                                <button class="qty-btn" onclick="updateQty(${item.id}, 1)"><span class="material-symbols-outlined" style="font-size: 1rem"><img style="height: 30px;" src="../icons/plus.png" alt="" srcset=""></span></button>
+                                <span class="qty-value">${item.qty}</span>
+                                <button class="qty-btn" onclick="updateQty(${item.id}, -1)"><span class="material-symbols-outlined" style="font-size: 1rem"><img style="height: 30px;" src="../icons/minus.png" alt="" srcset=""></span></button>
+                            </div>
+                            <span style="font-size: 0.875rem; color: var(--outline)">واحد: ${item.unit}</span>
+                        </div>
+                    </div>
+                    <div class="item-price-col">
+                        <p class="price-label">قیمت واحد</p>
+                        <p class="price-value">${formatNumber(item.price)} <span class="price-unit">ریال</span></p>
+                    </div>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            updateSummary(subtotal);
+        }
+
+        function updateSummary(subtotal) {
+            const itemCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            const tax = Math.round(subtotal * 0.09);
+            const total = subtotal > 0 ? subtotal + shippingCost + tax : 0;
+
+            document.getElementById('summary-count').innerText = `مجموع اقلام (${itemCount} مورد)`;
+            document.getElementById('subtotal').innerText = formatNumber(subtotal);
+            document.getElementById('tax').innerText = formatNumber(tax);
+            document.getElementById('grand-total').innerText = formatNumber(total);
+            document.getElementById('shipping').innerText = subtotal > 0 ? formatNumber(shippingCost) : '۰';
+        }
+
+        // Initialize
+        renderCart();
+    </script>
+</body></html>

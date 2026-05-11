@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ورود | فولاد صنعت</title>
+<style>
+
+
+
+    @font-face {
+    font-family: 'vazirmatn';
+    src: url(../Font/fonts/webfonts/Vazirmatn-Black.woff2);
+}
+
+
+
+*{
+    font-family: vazirmatn;
+    font-weight: 300;
+} 
+
+
+
+        :root {
+            --primary: #041627;
+            --primary-container: #1a2b3c;
+            --on-primary: #ffffff;
+            --secondary: #4d6170;
+            --tertiary-container: #ec6a07;
+            --surface: #f7fafd;
+            --surface-container: #ebeef2;
+            --surface-container-low: #f1f4f8;
+            --surface-container-highest: #e0e3e7;
+            --surface-container-lowest: #ffffff;
+            --on-surface: #181c1f;
+            --on-surface-variant: #44474c;
+            --outline-variant: #c4c6cd;
+            --border-radius-lg: 0.25rem;
+            --border-radius-xl: 0.5rem;
+            --font-headline: 'Plus Jakarta Sans', 'Vazirmatn', sans-serif;
+            --font-body: 'Inter', 'Vazirmatn', sans-serif;
+            --industrial-gradient: linear-gradient(135deg, #041627 0%, #1A2B3C 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--surface);
+            color: var(--on-surface);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Architectural Background Elements */
+        .bg-elements {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .bg-line-1 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            border-left: 1px solid var(--primary);
+            transform: skewX(-12deg);
+        }
+
+        .bg-line-2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 33.333%;
+            height: 66.666%;
+            border-top: 1px solid var(--primary);
+            opacity: 0.2;
+        }
+
+        /* Login Container */
+        .login-card {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr;
+            background-color: var(--surface-container-lowest);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .login-card {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Branding Side */
+        .branding-side {
+            display: none;
+            padding: 3rem;
+            background: var(--industrial-gradient);
+            color: var(--on-primary);
+            position: relative;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .branding-side {
+                display: flex;
+            }
+        }
+
+        .branding-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .branding-title {
+            font-family: var(--font-headline);
+            font-size: 1.875rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .branding-divider {
+            height: 4px;
+            width: 3rem;
+            background-color: var(--tertiary-container);
+            margin-bottom: 2rem;
+        }
+
+        .branding-text {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 20rem;
+            opacity: 0.9;
+        }
+
+        .branding-features {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-icon-box {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-container);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .feature-item:hover .feature-icon-box {
+            background-color: var(--tertiary-container);
+        }
+
+        .feature-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .branding-texture {
+            position: absolute;
+            inset: 0;
+            opacity: 0.2;
+            pointer-events: none;
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCB9N9qvYnBdJVPsandGHTo1PXtrVC6hQRev_5fxZBhZ_4KUiXsmSNwwraCQ7A089599a2UrAGz17aO0vnjEG4AyNxUUvXMSTdMQbk7wTK_txaXyWfRk3eSc_dOdQnh_3w-QqSGQEOhF5-BCc1sILpHy4mpmeRWIvHfVG8hInMerBwS_AuHHYpxI4DZMSwzhFwQ6rnSMNST1gogLv08ikjkhXOL6zNjjzwJVFe7ZxfkSb3xj0CmUh9e6BZ2JP5OUcoxT6SAEPuAvNGz');
+            background-size: cover;
+            mix-blend-mode: overlay;
+        }
+
+        /* Form Side */
+        .form-side {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .form-side {
+                padding: 4rem;
+            }
+        }
+
+        .form-header {
+            margin-bottom: 2.5rem;
+            text-align: right;
+        }
+
+        .form-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--on-surface-variant);
+            font-size: 0.875rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .forgot-password {
+            font-size: 0.75rem;
+            color: var(--tertiary-container);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            background-color: var(--surface-container-highest);
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 1rem;
+            border-radius: var(--border-radius-xl);
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-bottom-color: var(--primary);
+        }
+
+        .form-input::placeholder {
+            color: rgba(68, 71, 76, 0.4);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--on-surface-variant);
+            opacity: 0.4;
+            font-size: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid var(--outline-variant);
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            font-size: 0.75rem;
+            color: var(--on-surface-variant);
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--on-primary);
+            padding: 1rem;
+            border: none;
+            border-radius: var(--border-radius-lg);
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-container);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn .material-symbols-outlined {
+            font-size: 1.125rem;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover .material-symbols-outlined {
+            transform: translateX(-4px);
+        }
+
+        .form-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--surface-container);
+            text-align: center;
+        }
+
+        .form-footer p {
+            font-size: 0.875rem;
+            color: var(--on-surface-variant);
+        }
+
+        .signup-link {
+            color: var(--tertiary-container);
+            font-weight: 700;
+            text-decoration: none;
+            margin-right: 0.25rem;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        .tech-specs {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .tech-specs span {
+            font-size: 10px;
+            font-family: monospace;
+            letter-spacing: 0.15em;
+        }
+
+        /* Global Footer */
+        .site-footer {
+            background-color: #041627;
+            border-top: 1px solid #1A2B3C;
+            width: 100%;
+            padding: 2.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .site-footer {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-nav a {
+            color: rgba(224, 227, 231, 0.6);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 300;
+            transition: all 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: #f1f4f8;
+            transform: translateX(-4px);
+        }
+
+        .footer-copy {
+            color: #f1f4f8;
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f1f4f8;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body>
+<main>
+<!-- Background Architectural Elements -->
+<div class="bg-elements">
+<div class="bg-line-1"></div>
+<div class="bg-line-2"></div>
+</div>
+<!-- Login Container -->
+<div class="login-card">
+<!-- Branding Side -->
+<div class="branding-side">
+<div class="branding-content">
+<h1 class="branding-title">فولاد صنعت</h1>
+<div class="branding-divider"></div>
+<p class="branding-text">
+                        مرجع تخصصی تأمین و توزیع مقاطع فولادی با استانداردهای بین‌المللی.
+                    </p>
+</div>
+<div class="branding-features">
+<div class="feature-item">
+<div class="feature-icon-box">
+<span class="material-symbols-outlined"><img style="width: 100%; height: 35px;" src="../icons/man_logo_96px.png" alt="" srcset=""></span>
+</div>
+<span class="feature-label">کنترل کیفیت هوشمند</span>
+</div>
+<div class="feature-item">
+<div class="feature-icon-box">
+<span class="material-symbols-outlined"><img style="width: 100%; height: 35px;" src="../icons/speed_512px.png" alt="" srcset=""></span>
+</div>
+<span class="feature-label">ارسال سریع به سراسر کشور</span>
+</div>
+</div>
+<!-- Texture Overlay -->
+<div class="branding-texture"></div>
+</div>
+<!-- Form Side -->
+<div class="form-side">
+<div class="form-header">
+<h2>خوش آمدید</h2>
+<p>لطفاً برای دسترسی به پنل کاربری خود وارد شوید.</p>
+</div>
+<form class="login-form">
+<!-- Input Field: Email/Username -->
+<div class="input-group">
+<label class="input-label">ایمیل یا نام کاربری</label>
+<div class="input-wrapper">
+<input style="direction: ltr;" class="form-input" placeholder="example@steel.ir" required="" type="text"/>
+<span class="material-symbols-outlined input-icon"></span>
+</div>
+</div>
+<!-- Input Field: Password -->
+<div class="input-group">
+<div class="input-label-row">
+<label class="input-label">رمز عبور</label>
+<a class="forgot-password" href="#">فراموشی رمز؟</a>
+</div>
+<div class="input-wrapper">
+<input style="direction: ltr;" class="form-input" placeholder="••••••••" required="" type="password"/>
+<span class="material-symbols-outlined input-icon"></span>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="checkbox-group">
+<input id="remember" type="checkbox"/>
+<label class="checkbox-label" for="remember">مرا به خاطر بسپار</label>
+</div>
+<!-- Primary Action -->
+<button class="submit-btn" type="button" onclick="location.href='../mainpage.html'">
+  <span>ورود به سیستم</span>
+  <span class="material-symbols-outlined"><img style="width: 100%; height: 35px;" src="../icons/up_480px.png" alt="" srcset=""></span>
+</button>
+</form>
+<!-- Footer Links -->
+<div class="form-footer">
+<p>
+                        هنوز حساب کاربری ندارید؟ 
+                        <a class="signup-link" href="#">ثبت‌نام در فولاد صنعت</a>
+</p>
+</div>
+<!-- Tech Specs -->
+<div class="tech-specs">
+<span>VER 2.4.0-ST</span>
+<span>SECURE_SSL</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="site-footer">
+<div class="footer-nav">
+<a href="#">استانداردها</a>
+<a href="#">خدمات مهندسی</a>
+<a href="#">تماس با ما</a>
+</div>
+<div class="footer-copy">
+            © ۱۴۰۲ تمامی حقوق برای فولاد صنعت محفوظ است.
+        </div>
+<div class="footer-logo">فولاد صنعت</div>
+</footer>
+</body></html>

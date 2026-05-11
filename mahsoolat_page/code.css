@@ -1,0 +1,582 @@
+@font-face {
+    font-family: 'vazirmatn';
+    src: url(../Font/fonts/webfonts/Vazirmatn-Black.woff2);
+}
+
+
+
+*{
+    font-family: vazirmatn;
+    font-weight: 300;
+} 
+
+.icon{
+    width: 100%;
+    height: 35px;
+}
+
+
+
+
+
+
+
+        :root {
+            --primary: #041627;
+            --on-primary: #ffffff;
+            --surface: #f7fafd;
+            --on-surface: #181c1f;
+            --on-surface-variant: #44474c;
+            --surface-container-low: #f1f4f8;
+            --surface-container-high: #e5e8ec;
+            --surface-container-highest: #e0e3e7;
+            --outline: #74777d;
+            --outline-variant: #c4c6cd;
+            --tertiary-container: #4a1c00;
+            --on-tertiary-container: #ec6a07;
+            --font-main: 'Vazirmatn', sans-serif;
+            --font-tech: 'Inter', 'Vazirmatn', sans-serif;
+            --font-headline: 'Plus Jakarta Sans', 'Vazirmatn', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--surface);
+            color: var(--on-surface);
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--surface-container-highest);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.05em;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        nav a {
+            color: rgba(24, 28, 31, 0.7);
+            transition: color 0.3s;
+            padding-bottom: 0.25rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-container .material-symbols-outlined {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--outline);
+            font-size: 1.25rem;
+        }
+
+        .search-input {
+            background-color: var(--surface-container-highest);
+            border: none;
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            font-size: 0.875rem;
+            width: 256px;
+        }
+
+        .login-btn {
+            background-color: var(--primary);
+            color: var(--on-primary);
+            padding: 0.5rem 1.5rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: transform 0.1s, opacity 0.1s;
+        }
+
+        .login-btn:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        /* Sidebar */
+        aside {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-inner {
+            background-color: var(--surface-container-low);
+            padding: 1.5rem;
+            position: sticky;
+            top: 6rem;
+        }
+
+        .filter-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-header h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+
+        .filter-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--on-surface-variant);
+            margin-bottom: 1rem;
+        }
+
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .chip {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            background-color: var(--surface-container-highest);
+            color: var(--on-surface-variant);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .chip.active {
+            background-color: var(--primary);
+            color: var(--on-primary);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background-color: var(--surface);
+            cursor: pointer;
+        }
+
+        .checkbox-item input {
+            cursor: pointer;
+        }
+
+        .checkbox-item span {
+            font-family: vazirmatn;
+            font-size: 0.75rem;
+        }
+
+        .select-input {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--surface-container-highest);
+            border: none;
+            font-size: 0.75rem;
+            font-family: vazirmatn;
+        }
+
+        .clear-filters {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--surface-container-highest);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        /* Product Grid */
+        .content-area {
+            flex-grow: 1;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .content-header h1 {
+            font-size: 1.875rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-header p {
+            font-size: 0.875rem;
+            color: var(--on-surface-variant);
+        }
+
+        .sort-options {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            align-items: center;
+        }
+
+        .sort-options span {
+            color: var(--on-surface-variant);
+        }
+
+        .sort-btn {
+            color: var(--on-surface-variant);
+            transition: color 0.2s;
+        }
+
+        .sort-btn.active {
+            color: var(--primary);
+            font-weight: 700;
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 0.25rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card */
+        .product-card {
+            background-color: var(--surface-container-low);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .image-wrapper {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background-color: var(--surface-container-highest);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--tertiary-container);
+            color: var(--on-tertiary-container);
+            padding: 0.25rem 0.5rem;
+            font-size: 0.625rem;
+            font-weight: 700;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title-row h3 {
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .tech-label {
+            font-family: var(--font-tech);
+            font-size: 0.75rem;
+            color: var(--on-surface-variant);
+        }
+
+        .seller-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            color: var(--on-surface-variant);
+        }
+
+        .price-box {
+            background-color: var(--surface);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        .price-label {
+            font-size: 0.625rem;
+            color: var(--on-surface-variant);
+        }
+
+        .price-value {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .price-num {
+            font-family: var(--font-tech);
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .price-unit {
+            font-size: 0.625rem;
+            color: var(--on-surface-variant);
+        }
+
+        .update-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.625rem;
+            color: var(--on-surface-variant);
+        }
+
+        .update-time.highlight {
+            color: var(--on-tertiary-container);
+            font-weight: 500;
+        }
+
+        .buy-btn {
+            margin-top: auto;
+            background-color: var(--primary);
+            color: var(--on-primary);
+            width: 100%;
+            padding: 0.75rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: opacity 0.1s, transform 0.1s;
+        }
+
+        .buy-btn:active {
+            opacity: 0.8;
+            transform: scale(0.98);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--surface-container-highest);
+            color: var(--on-surface-variant);
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .page-btn:hover {
+            background-color: var(--primary);
+            color: var(--on-primary);
+        }
+
+        .page-btn.active {
+            background-color: var(--primary);
+            color: var(--on-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #041627;
+            color: #f1f4f8;
+            padding-top: 2.5rem;
+            margin-top: 4rem;
+            border-top: 1px solid #1A2B3C;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 2.5rem;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            color: rgba(224, 227, 231, 0.6);
+            font-size: 0.75rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .link-group h4 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 300;
+        }
+
+        .link-list a {
+            color: rgba(224, 227, 231, 0.6);
+            transition: color 0.2s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .link-list a:hover {
+            color: #f1f4f8;
+            transform: translateX(-4px);
+        }
+
+        .contact-text {
+            color: rgba(224, 227, 231, 0.6);
+            font-size: 0.75rem;
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            padding: 1.5rem 0;
+            border-top: 1px solid #1A2B3C;
+            text-align: center;
+            color: rgba(224, 227, 231, 0.4);
+            font-size: 0.625rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+            }
+            .footer-top {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            nav {
+                display: none;
+            }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }

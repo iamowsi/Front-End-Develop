@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>فولاد صنعت | پیشنهاد خرید هوشمند</title>
+<link rel="stylesheet" href="code.css">
+</head>
+<body>
+<header>
+<div class="container nav-wrapper">
+<a class="logo" href="#">فولاد صنعت</a>
+<nav>
+<a href="../mainpage.html">خانه</a>
+<a href="../mahsoolat_page/code.html">محصولات</a>
+<a href="#">سبد خرید</a>
+<a href="#">مشاوره</a>
+<a class="active" href="./code.html">پیشنهاد خرید</a>
+<a href="#">مزایدات</a>
+</nav>
+<button class="btn-login" onclick="location.href='../Page_login/code.html'">ورود</button>
+</div>
+</header>
+<main class="container">
+<section class="hero">
+<h1>هوشمندترین مسیر برای <span>تأمین مقاطع فولادی</span></h1>
+<p>با استفاده از ابزار تحلیل پروژه فولاد صنعت، بر اساس نوع سازه و ابعاد دقیق آن، لیست پیشنهادی آهن‌آلات مورد نیاز خود را به همراه تخمین وزن دریافت کنید.</p>
+</section>
+<div class="main-layout">
+<!-- Sidebar Config -->
+<aside class="sidebar">
+<div class="card-config">
+<h2>
+<span class="material-symbols-outlined"><img class="column" src="../icons/settings_512px.png" alt="" srcset=""></span>
+                        تنظیمات پروژه
+                    </h2>
+<div class="input-group">
+<label class="input-label">نوع پروژه را انتخاب کنید</label>
+<div class="type-selector" id="projectTypeSelector">
+<button class="type-btn active" data-type="residential">
+<div class="type-btn-content">
+<span class="material-symbols-outlined"><img class="column" src="../icons/apartment.png" alt="" srcset=""></span>
+<span>مسکونی (اسکلت فلزی)</span>
+</div>
+<!-- <span class="material-symbols-outlined"></span> -->
+</button>
+<button class="type-btn" data-type="industrial">
+<div class="type-btn-content">
+<span class="material-symbols-outlined"><img class="column" src="../icons/factory_480px.png" alt="" srcset=""></span>
+<span>صنعتی و کارخانه‌ای</span>
+</div>
+</button>
+<button class="type-btn" data-type="warehouse">
+<div class="type-btn-content">
+<span class="material-symbols-outlined"><img src="../icons/anbar.png" class="column" alt="" srcset=""></span>
+<span>سوله و انبار</span>
+</div>
+</button>
+</div>
+</div>
+<div class="input-group">
+<label class="input-label">متراژ زیربنا (مترمربع)</label>
+<div class="text-input-wrapper">
+<input class="text-input" id="areaInput" placeholder="مثلا ۵۰۰" type="number"/>
+<span class="input-suffix">M²</span>
+</div>
+</div>
+<div class="input-group">
+<label class="input-label">تعداد طبقات</label>
+<div class="text-input-wrapper">
+<input class="text-input" id="floorsInput" placeholder="مثلا ۵" type="number"/>
+<span class="input-suffix">FLOORS</span>
+</div>
+</div>
+<button class="btn-calculate" id="calculateBtn">
+                        محاسبه و پیشنهاد
+                        <span class="material-symbols-outlined"><img class="column" src="../icons/analytics_480px.png" alt="" srcset=""></span>
+</button>
+</div>
+<div class="support-card">
+<h3>نیاز به نقشه دقیق دارید؟</h3>
+<p>کارشناسان فنی ما آماده‌اند تا نقشه‌های اجرایی شما را بررسی و لیست دقیق (MTO) ارائه دهند.</p>
+<button class="btn-support">درخواست مشاوره فنی</button>
+<span class="material-symbols-outlined bg-icon">engineering</span>
+</div>
+</aside>
+<!-- Results Section -->
+<section class="results">
+<div class="results-header">
+<h2>لیست پیشنهادی تأمین</h2>
+<div class="estimate-badge">برآورد تقریبی: <span id="totalEstimate">۴۲.۵ تن</span></div>
+</div>
+<div class="bento-grid">
+<!-- Card 1 -->
+<div class="card-item">
+<div>
+<div class="card-item-top">
+<span class="material-symbols-outlined icon"><img class="iron" src="../icons/iron.png" alt="" srcset=""></span>
+<span class="tag">ST37 STANDARD</span>
+</div>
+<h3>میلگرد آجدار A3</h3>
+<p class="desc">سایزهای ۱۲، ۱۴ و ۱۸ برای فونداسیون و ستون</p>
+</div>
+<div class="card-footer">
+<div class="weight-value">
+<span class="num" id="rebarWeight">۱۲,۵۰۰</span>
+<span class="unit">کیلوگرم</span>
+</div>
+<a class="btn-price" href="#">
+                                مشاهده قیمت روز
+<span class="material-symbols-outlined" style="font-size: 1rem;"><img class="column" src="../icons/chevronright.svg" alt="" srcset=""></span>
+</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="card-item">
+<div>
+<div class="card-item-top">
+<span class="material-symbols-outlined icon"><img class="column" src="../icons/column.png" alt="" srcset=""></span>
+<span class="tag">IPE 140-270</span>
+</div>
+<h3>تیرآهن IPE</h3>
+<p class="desc">شاخه ۱۲ متری ذوب آهن اصفهان</p>
+</div>
+<div class="card-footer">
+<div class="weight-value">
+<span class="num" id="beamWeight">۱۸,۲۰۰</span>
+<span class="unit">کیلوگرم</span>
+</div>
+<a class="btn-price" href="#">
+                                مشاهده قیمت روز
+                                <span class="material-symbols-outlined" style="font-size: 1rem;"><img src="../icons/chevronleft (1).svg" class="column" alt="" srcset=""></span>
+</a>
+</div>
+</div>
+<!-- Card 3 (Wide) -->
+<div class="card-wide">
+<div class="card-wide-content">
+<span class="card-wide-tag">STRUCTURAL PLATES</span>
+<h3>ورق سیاه (ST52)</h3>
+<p>برای ساخت بیس‌پلیت‌ها و اتصالات صلب سازه، ورق‌های ضخامت ۱۵ و ۲۰ میلی‌متر فولاد مبارکه پیشنهاد می‌شود.</p>
+<div class="wide-stats">
+<div class="stat-item">
+<span class="label">وزن تخمینی</span>
+<span class="val"><span id="plateWeight">۶,۸۰۰</span> <span class="unit">Kg</span></span>
+</div>
+<div class="stat-item">
+<span class="label">تعداد شیت</span>
+<span class="val"><span id="plateUnits">۴۵</span> <span class="unit">Unit</span></span>
+</div>
+</div>
+</div>
+<div class="card-wide-image" style="background-image: url('../images/suggest.png')"></div>
+<span class="material-symbols-outlined" style="position: absolute; top: 1rem; right: 1rem; font-size: 4rem; opacity: 0.1;">layers</span>
+</div>
+<!-- Card 4 -->
+<div class="card-item">
+<div>
+<div class="card-item-top">
+<span class="material-symbols-outlined icon"><img class="column" src="../icons/square_144px.png" alt="" srcset=""></span>
+<span class="tag">BOX SECTION</span>
+</div>
+<h3>قوطی و پروفیل</h3>
+<p class="desc">مقاطع ۴۰x۴۰ و ۹۰x۹۰ جهت وال‌پست و نرده</p>
+</div>
+<div class="card-footer">
+<div class="weight-value">
+<span class="num" id="profileWeight">۵,۰۰۰</span>
+<span class="unit">کیلوگرم</span>
+</div>
+<a class="btn-price" href="#">
+                                مشاهده قیمت روز
+                                <span class="material-symbols-outlined" style="font-size: 1rem;"><img class="column" src="../icons/chevronright.svg" alt="" srcset=""></span>
+</a>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="card-item">
+<div>
+<div class="card-item-top">
+<span class="material-symbols-outlined icon"><img class="column" src="../icons/archit.png" alt="" srcset=""></span>
+<span class="tag">UNP / L-SECTION</span>
+</div>
+<h3>نبشی و ناودانی</h3>
+<p class="desc">سایزهای ۴ و ۵ جهت ساپورت‌های تاسیساتی</p>
+</div>
+<div class="card-footer">
+<div class="weight-value">
+<span class="num">درخواست استعلام</span>
+</div>
+<a class="btn-price" href="#">
+                                مشاهده قیمت روز
+                                <span class="material-symbols-outlined" style="font-size: 1rem;"><img class="column" src="../icons/chevronleft (1).svg" alt="" srcset=""></span>
+</a>
+</div>
+</div>
+</div>
+<!-- Final Actions -->
+<div class="cta-footer">
+<div class="cta-text">
+<h4>صدور پیش‌فاکتور آنی</h4>
+<p>تمامی مقادیر بالا بر اساس استانداردهای مهندسی محاسبه شده‌اند.</p>
+</div>
+<div class="cta-btns">
+<button class="btn-secondary">دانلود فایل PDF</button>
+<button class="btn-primary-action">ثبت سفارش نهایی</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer>
+<div class="container footer-content">
+<div class="footer-logo">فولاد صنعت</div>
+<div class="footer-links">
+<a href="#">استانداردها</a>
+<a href="#">خدمات مهندسی</a>
+<a href="#">تماس با ما</a>
+</div>
+<p class="copyright">© ۱۴۰۲ تمامی حقوق برای فولاد صنعت محفوظ است.</p>
+</div>
+</footer>
+<script>
+const typeButtons = document.querySelectorAll('.type-btn');
+let selectedType = 'residential';
+
+typeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // 1. حذف کلاس active و آیکون تصویری از همه دکمه‌ها
+        typeButtons.forEach(b => {
+            b.classList.remove('active');
+            const existingIcon = b.querySelector('.custom-check-icon');
+            if (existingIcon) existingIcon.remove();
+        });
+        
+        // 2. فعال کردن دکمه جاری
+        btn.classList.add('active');
+        selectedType = btn.dataset.type;
+        
+        // 3. ساختن آیکون تصویری و اضافه کردن به دکمه
+        const checkIcon = document.createElement('img');
+        checkIcon.className = 'custom-check-icon'; // کلاس اختصاصی برای حذف آسان
+        checkIcon.src = '../icons/circle.png'; // ← آدرس تصویر خود را اینجا بگذارید
+        checkIcon.alt = 'selected';
+        // می‌توانید عرض و ارتفاع هم بدید:
+        checkIcon.style.width = '20px';
+        checkIcon.style.height = '20px';
+        
+        btn.appendChild(checkIcon);
+    });
+});
+
+        // Simple Recommendation Calculator Logic
+        const calculateBtn = document.getElementById('calculateBtn');
+        const areaInput = document.getElementById('areaInput');
+        const floorsInput = document.getElementById('floorsInput');
+
+        // Output elements
+        const totalEstimate = document.getElementById('totalEstimate');
+        const rebarWeight = document.getElementById('rebarWeight');
+        const beamWeight = document.getElementById('beamWeight');
+        const plateWeight = document.getElementById('plateWeight');
+        const plateUnits = document.getElementById('plateUnits');
+        const profileWeight = document.getElementById('profileWeight');
+
+        function formatNum(num) {
+            return new Intl.NumberFormat('fa-IR').format(Math.round(num));
+        }
+
+        calculateBtn.addEventListener('click', () => {
+            const area = parseFloat(areaInput.value) || 0;
+            const floors = parseFloat(floorsInput.value) || 1;
+            
+            if (area <= 0) {
+                alert('لطفا متراژ را وارد کنید');
+                return;
+            }
+
+            // Mock coefficients based on structural type
+            let baseKgPerM2 = 75; // Average steel consumption
+            if (selectedType === 'industrial') baseKgPerM2 = 110;
+            if (selectedType === 'warehouse') baseKgPerM2 = 50;
+
+            const totalKg = area * floors * baseKgPerM2;
+            const totalTon = (totalKg / 1000).toFixed(1);
+
+            // Update UI
+            totalEstimate.textContent = `${formatNum(totalTon)} تن`;
+            rebarWeight.textContent = formatNum(totalKg * 0.3);
+            beamWeight.textContent = formatNum(totalKg * 0.45);
+            plateWeight.textContent = formatNum(totalKg * 0.15);
+            plateUnits.textContent = formatNum((totalKg * 0.15) / 150); // Assuming 150kg per sheet avg
+            profileWeight.textContent = formatNum(totalKg * 0.1);
+
+            // Add simple feedback animation
+            const resultsSection = document.querySelector('.results');
+            resultsSection.style.opacity = '0.5';
+            setTimeout(() => {
+                resultsSection.style.opacity = '1';
+                resultsSection.style.transition = 'opacity 0.3s ease';
+            }, 100);
+        });
+    </script>
+</body></html>
