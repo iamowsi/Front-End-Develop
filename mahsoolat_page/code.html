@@ -14,7 +14,7 @@
       <a href="../mainpage.html">خانه</a>
       <a class="active" href="#">محصولات</a>
       <a href="../shop_page/code.html">سبد خرید</a>
-      <a href="#">مشاوره</a>
+      <a href="../Page_moshavere/code.html">مشاوره</a>
       <a href="../Page_suggest/code.html">پیشنهاد خرید</a>
       <a href="../mozaiede/code.html">مزایدات</a>
     </nav>
@@ -333,7 +333,6 @@
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }
 
-  // افزودن محصول به سبد خرید (اگر موجود باشد فقط quantity زیاد می‌شود)
   function addToCart(product) {
     let cart = getCart();
     const existingIndex = cart.findIndex(item => item.id === product.id);
@@ -343,7 +342,6 @@
       cart.push({ ...product, qty: 1 });
     }
     saveCart(cart);
-    // نمایش پیام ساده
     alert(`✅ ${product.title} به سبد خرید اضافه شد.`);
   }
 
@@ -351,51 +349,30 @@
   // 2. استخراج اطلاعات محصول از هر کارت
   // ----------------------------------------------
   function extractProductFromCard(cardElement) {
-    // id (از data-product-id)
     const id = parseInt(cardElement.getAttribute('data-product-id'));
-
-    // عنوان محصول (h3 داخل .card-body)
     const title = cardElement.querySelector('.card-body h3').innerText;
-
-    // فروشنده (از .seller-info)
     const sellerSpan = cardElement.querySelector('.seller-info span');
     const seller = sellerSpan ? sellerSpan.innerText : 'نامشخص';
-
-    // متا: ترکیب نوع محصول (تکنولوژی) + فروشنده
     const techLabel = cardElement.querySelector('.tech-label')?.innerText || '';
     const meta = `${techLabel} | ${seller}`;
-
-    // واحد (از متن .price-label مثلاً "قیمت هر کیلوگرم:" یا "قیمت هر شاخه:")
     const priceLabel = cardElement.querySelector('.price-label').innerText;
     let unit = 'کیلوگرم';
     if (priceLabel.includes('شاخه')) unit = 'شاخه';
     else if (priceLabel.includes('کیلوگرم')) unit = 'کیلوگرم';
     else unit = 'عدد';
-
-    // قیمت (تبدیل رشته با کاما به عدد)
     const priceText = cardElement.querySelector('.price-num').innerText;
     const price = parseInt(priceText.replace(/,/g, ''));
-
-    // آدرس تصویر
     const imgSrc = cardElement.querySelector('.image-wrapper img')?.getAttribute('src') || '';
-
-    return {
-      id,
-      title,
-      meta,
-      unit,
-      price,
-      image: imgSrc,
-    };
+    return { id, title, meta, unit, price, image: imgSrc };
   }
 
   // ----------------------------------------------
-  // 3. اتصال رویداد کلیک به همه دکمه‌های خرید
+  // 3. اتصال رویداد کلیک به دکمه‌های خرید
   // ----------------------------------------------
   function bindAddToCartButtons() {
     const buyBtns = document.querySelectorAll('.buy-btn');
     buyBtns.forEach(btn => {
-      btn.removeEventListener('click', handleBuyClick); // جلوگیری از دابل اتصال
+      btn.removeEventListener('click', handleBuyClick);
       btn.addEventListener('click', handleBuyClick);
     });
   }
@@ -409,7 +386,61 @@
   }
 
   // ----------------------------------------------
-  // 4. فیلتر و مرتب‌سازی (همان کد قبلی شما با یک اصلاح کوچک)
+  // 4. مرتب‌سازی محصولات (جدیدترین، ارزان‌ترین، گران‌ترین)
+  // ----------------------------------------------
+  function toEnglishDigits(str) {
+    const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+    const englishDigits = ['0','1','2','3','4','5','6','7','8','9'];
+    return str.replace(/[۰-۹]/g, d => englishDigits[persianDigits.indexOf(d)]);
+  }
+
+  function parseTimeAgoToMinutes(timeText) {
+    if (!timeText) return Infinity;
+    const converted = toEnglishDigits(timeText);
+    const match = converted.match(/(\d+)\s*(دقیقه|ساعت)/);
+    if (!match) return 0;
+    const value = parseInt(match[1], 10);
+    const unit = match[2];
+    if (unit === 'ساعت') return value * 60;
+    return value;
+  }
+
+  function getProductCardSortKey(card, sortType) {
+    if (sortType === 'price-asc') {
+      const priceNum = card.querySelector('.price-num');
+      if (!priceNum) return Infinity;
+      return parseInt(priceNum.innerText.replace(/,/g, ''));
+    } else if (sortType === 'price-desc') {
+      const priceNum = card.querySelector('.price-num');
+      if (!priceNum) return -Infinity;
+      // برگرداندن منفی قیمت تا بزرگترین قیمت کوچک‌ترین عدد شود (برای مرتب‌سازی صعودی)
+      return -parseInt(priceNum.innerText.replace(/,/g, ''));
+    } else if (sortType === 'newest') {
+      const updateSpan = card.querySelector('.update-time');
+      if (!updateSpan) return Infinity;
+      return parseTimeAgoToMinutes(updateSpan.innerText);
+    }
+    return 0;
+  }
+
+  // تابع اصلی مرتب‌سازی (اصلاح شده: فقط keyA - keyB)
+  function sortProducts(sortType) {
+    const grid = document.getElementById('productGrid');
+    const cards = Array.from(grid.querySelectorAll('.product-card'));
+    cards.sort((a, b) => {
+      const keyA = getProductCardSortKey(a, sortType);
+      const keyB = getProductCardSortKey(b, sortType);
+      // برای هر سه حالت (newest, price-asc, price-desc) از تفریق ساده استفاده می‌شود
+      // زیرا در price-desc کلید منفی قیمت است و مرتب‌سازی صعودی همان نزولی قیمت را می‌دهد
+      return keyA - keyB;
+    });
+    // بازسازی مجدد DOM
+    cards.forEach(card => grid.appendChild(card));
+    bindAddToCartButtons();
+  }
+
+  // ----------------------------------------------
+  // 5. راه‌اندازی اولیه و رویدادها
   // ----------------------------------------------
   document.addEventListener('DOMContentLoaded', () => {
     // Product Type Filter
@@ -428,7 +459,11 @@
       btn.addEventListener('click', () => {
         sortBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        console.log('Sorting by:', btn.innerText);
+        let sortType = '';
+        if (btn.innerText === 'جدیدترین') sortType = 'newest';
+        else if (btn.innerText === 'ارزان‌ترین') sortType = 'price-asc';
+        else if (btn.innerText === 'گران‌ترین') sortType = 'price-desc';
+        sortProducts(sortType);
       });
     });
 
@@ -443,8 +478,11 @@
       console.log('Filters cleared');
     });
 
-    // اضافه کردن قابلیت افزودن به سبد خرید به دکمه‌ها
+    // Bind initial buy buttons
     bindAddToCartButtons();
+
+    // Default sorting (newest)
+    sortProducts('newest');
   });
 </script>
 </body>

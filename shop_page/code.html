@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-
-<html dir="rtl" lang="fa"><head>
+<html dir="rtl" lang="fa">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link rel="stylesheet" href="code.css">
 <title>سبد خرید صنعتی | فولاد صنعت</title>
 <style>
+  /* اضافه کردن استایل ساده برای فیلد ورودی تعداد */
+  .qty-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f5f5f5;
+    border-radius: 2rem;
+    padding: 0.25rem;
+  }
+  .qty-input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    background: white;
+    font-family: inherit;
+  }
+  .qty-input:focus {
+    outline: none;
+    border-color: #e53935;
+  }
+  /* حذف spinner در مرورگرهای مبتنی بر Webkit (اختیاری) */
+  .qty-input::-webkit-inner-spin-button, 
+  .qty-input::-webkit-outer-spin-button {
+    opacity: 0.5;
+  }
 </style>
 </head>
 <body>
@@ -16,13 +44,13 @@
 <a href="../mainpage.html">خانه</a>
 <a href="../mahsoolat_page/code.html">محصولات</a>
 <a class="active" href="#">سبد خرید</a>
-<a href="#">مشاوره</a>
-<a href="#">پیشنهاد خرید</a>
-<a href="#">مزایدات</a>
+<a href="../Page_moshavere/code.html">مشاوره</a>
+<a href="../Page_suggest/code.html">پیشنهاد خرید</a>
+<a href="../mozaiede/code.html">مزایدات</a>
 </nav>
 <div class="header-actions">
 <button class="btn-icon">
-<span class="material-symbols-outlined"><img style="height: 30px;" src="../icons/shopping_cart_500px.png" alt="" srcset=""></span>
+<span class="material-symbols-outlined"><img style="height: 30px;" src="../icons/shopping_cart_500px.png" alt=""></span>
 </button>
 <button class="btn-primary">ورود</button>
 </div>
@@ -61,11 +89,9 @@
 </div>
 </div>
 <button class="checkout-btn">
-                        تکمیل خرید و پرداخت
-                        <!-- <span class="material-symbols-outlined">chevron_left</span> -->
+                        صدور پیش فاکتور
 </button>
 <div class="validity-info">
-<!-- <span class="material-symbols-outlined" style="color: var(--tertiary);">verified_user</span> -->
 <p>تمامی قیمت‌ها طبق نرخ روز بازار آهن و فولاد محاسبه شده و به مدت ۱۵ دقیقه معتبر است.</p>
 </div>
 </div>
@@ -74,25 +100,23 @@
 <h4>نیاز به مشاوره فنی دارید؟</h4>
 <p>تماس با کارشناسان فروش فولاد صنعت</p>
 </div>
-<button class="support-btn">
-<!-- <span class="material-symbols-outlined">headset_mic</span> -->
-</button>
+<button class="support-btn"></button>
 </div>
 </div>
 </div>
 <section class="features">
 <div class="feature-item">
-<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/shipping.png" alt="" srcset=""></span></div>
+<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/shipping.png" alt=""></span></div>
 <h3>ارسال سریع با ناوگان سنگین</h3>
 <p>تحویل مستقیم از انبار کارخانه به تمام نقاط کشور</p>
 </div>
 <div class="feature-item">
-<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/document_480px.png" alt="" srcset=""></span></div>
+<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/document_480px.png" alt=""></span></div>
 <h3>صدور آنی فاکتور رسمی</h3>
 <p>مطابق با استانداردهای سازمان امور مالیاتی کشور</p>
 </div>
 <div class="feature-item">
-<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/verified_badge_240px.png" alt="" srcset=""></span></div>
+<div class="feature-icon"><span class="material-symbols-outlined"><img style="height: 40px;" src="../icons/verified_badge_240px.png" alt=""></span></div>
 <h3>ضمانت اصالت و آنالیز متریال</h3>
 <p>ارائه گواهینامه فنی و سرتیفیکیت معتبر محصول</p>
 </div>
@@ -111,6 +135,7 @@
             </div>
 </div>
 </footer>
+
 <script>
         // Initial Data
         const defaultCart = [
@@ -143,10 +168,25 @@
             renderCart();
         }
 
+        // تغییر تعداد با دکمه +/-
         function updateQty(id, delta) {
             cart = cart.map(item => {
                 if (item.id === id) {
                     const newQty = Math.max(1, item.qty + delta);
+                    return { ...item, qty: newQty };
+                }
+                return item;
+            });
+            saveCart();
+        }
+
+        // تغییر مستقیم تعداد از طریق فیلد ورودی
+        function updateQtyDirect(inputElement) {
+            const id = parseInt(inputElement.getAttribute('data-id'));
+            let newQty = parseInt(inputElement.value);
+            if (isNaN(newQty) || newQty < 1) newQty = 1;
+            cart = cart.map(item => {
+                if (item.id === id) {
                     return { ...item, qty: newQty };
                 }
                 return item;
@@ -185,9 +225,14 @@
                         <p class="item-meta">${item.meta}</p>
                         <div class="item-controls">
                             <div class="qty-picker">
-                                <button class="qty-btn" onclick="updateQty(${item.id}, 1)"><span class="material-symbols-outlined" style="font-size: 1rem"><img style="height: 30px;" src="../icons/plus.png" alt="" srcset=""></span></button>
-                                <span class="qty-value">${item.qty}</span>
-                                <button class="qty-btn" onclick="updateQty(${item.id}, -1)"><span class="material-symbols-outlined" style="font-size: 1rem"><img style="height: 30px;" src="../icons/minus.png" alt="" srcset=""></span></button>
+                                <button class="qty-btn" onclick="updateQty(${item.id}, 1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem"><img style="height: 30px;" src="../icons/plus.png" alt=""></span>
+                                </button>
+                                <!-- فیلد ورودی برای وارد کردن مستقیم تعداد -->
+                                <input type="number" class="qty-input" value="${item.qty}" min="1" data-id="${item.id}" onchange="updateQtyDirect(this)">
+                                <button class="qty-btn" onclick="updateQty(${item.id}, -1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem"><img style="height: 30px;" src="../icons/minus.png" alt=""></span>
+                                </button>
                             </div>
                             <span style="font-size: 0.875rem; color: var(--outline)">واحد: ${item.unit}</span>
                         </div>
@@ -218,4 +263,5 @@
         // Initialize
         renderCart();
     </script>
-</body></html>
+</body>
+</html>
